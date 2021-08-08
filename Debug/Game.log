@@ -1,0 +1,9 @@
+﻿  App.cpp
+  Camera.cpp
+  GameManager.cpp
+  GameObject.cpp
+  Ground.cpp
+  Player.cpp
+  main.cpp
+  Generating Code...
+  Game.vcxproj -> D:\SDL2Game\Game\Debug\Game.exe
