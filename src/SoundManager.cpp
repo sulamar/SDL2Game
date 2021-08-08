@@ -40,3 +40,4 @@ void SoundManager::CleanUp()
 	Mix_FreeMusic(music);
 	Mix_FreeChunk(sound);
 }
+

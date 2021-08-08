@@ -1,9 +1,7 @@
 #pragma once
-#include <iostream>
-#include <thread>
 #include "Player.h"
 #include "Ground.h"
-
+#include "SoundManager.h"
 class GameManager
 {
 public:
@@ -15,6 +13,7 @@ public:
 	static const int LEVEL_HEIGHT = 800;
 private:
 	RenderWindow window;
+	SoundManager soundManager;
 
 	SDL_Texture* playerTex;
 	SDL_Texture* groundTex;

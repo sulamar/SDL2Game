@@ -1,5 +1,4 @@
 #include "GameManager.h"
-
 GameManager::GameManager(const char* _title, int _width, int _height)
 	: title(_title), width(_width), height(_height), playerTex(nullptr), groundTex(nullptr)
 {
@@ -9,6 +8,8 @@ void GameManager::Init()
 {
 	window = RenderWindow(title, width, height);
 	window.Init();
+
+	soundManager.Init();
 
 	playerTex = window.LoadTexture("assets/square.png");
 	groundTex = window.LoadTexture("assets/ground.png");
@@ -24,6 +25,7 @@ void GameManager::Init()
 		grounds.push_back(Ground(groundTex, Vector2(32, 32), Vector2f(32.0f * i, 132.0f)));
 	}
 
+	soundManager.PlayMusic("assets/music.wav");
 }
 
 void GameManager::Run()
@@ -38,8 +40,10 @@ void GameManager::Run()
 			{
 			case SDL_QUIT:
 				window.SetRunning(false);
-				SDL_Quit();
+				soundManager.CleanUp();
 				window.CleanUp();
+				SDL_Quit();
+				Mix_Quit();
 			}
 		}
 

@@ -2,8 +2,9 @@
   Camera.cpp
   GameManager.cpp
   GameObject.cpp
-  Ground.cpp
   Player.cpp
+  SoundManager.cpp
   main.cpp
   Generating Code...
+D:\SDL2Game\Game\Game\src\SoundManager.cpp(13): warning C4715: 'SoundManager::Init': not all control paths return a value
   Game.vcxproj -> D:\SDL2Game\Game\Debug\Game.exe

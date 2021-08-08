@@ -15,7 +15,6 @@ public:
 	void UpdateCamera(Camera& _cam);
 
 	static const int vel = 5;
-
 private:
 	int health;
 	Camera cam;

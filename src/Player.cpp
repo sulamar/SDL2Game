@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "SoundManager.h"
 Player::Player(SDL_Texture* tex, int _health, Vector2 _size, Vector2f _pos, Camera& _cam)
 {
 	texture = tex;
@@ -44,15 +44,19 @@ void Player::CheckInput(SDL_Event& e)
 		{
 		case SDLK_UP:
 			cam.pos.y -= Player::vel;
+			SoundManager::PlaySound("assets/sound.wav");
 			break;
 		case SDLK_DOWN:
 			cam.pos.y += Player::vel;
+			SoundManager::PlaySound("assets/sound.wav");
 			break;
 		case SDLK_LEFT:
 			cam.pos.x -= Player::vel;
+			SoundManager::PlaySound("assets/sound.wav");
 			break;
 		case SDLK_RIGHT:
 			cam.pos.x += Player::vel;
+			SoundManager::PlaySound("assets/sound.wav");
 			break;
 		}
 	}
