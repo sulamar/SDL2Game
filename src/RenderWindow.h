@@ -14,17 +14,11 @@ public:
 	void Clear();
 	void Display();
 
-	static bool GetRunning();
-	static void SetRunning(bool r);
+	bool running;
 
-	SDL_Renderer* GetRenderer() const;
-	SDL_Texture* LoadTexture(const char* _filepath);
-
+	static SDL_Renderer* renderer;
 private:
 	SDL_Window* window;
-	SDL_Renderer* renderer;
-
-	static bool run;
 
 	const char* title;
 	int width;

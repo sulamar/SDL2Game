@@ -1,5 +1,4 @@
 #include "Ground.h"
-
 Ground::Ground(SDL_Texture* tex, Vector2 _size, Vector2f _pos)
 {
 	texture = tex;

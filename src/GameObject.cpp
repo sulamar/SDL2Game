@@ -1,6 +1,4 @@
 #include "GameObject.h"
-#include "GameManager.h"
-#include "Player.h"
 GameObject::GameObject(SDL_Texture* tex, Vector2 _size, Vector2f _pos)
 {
 	texture = tex;
@@ -19,48 +17,30 @@ SDL_Texture* GameObject::GetTexture()
 	return texture;
 }
 
-void GameObject::Render(SDL_Renderer* renderer, Camera& cam)
+void GameObject::Update()
+{
+	collider.x = pos.x;
+	collider.y = pos.y;
+	collider.w = size.x;
+	collider.h = size.y;
+}
+
+void GameObject::Render(Camera& cam)
 {
 	SDL_Rect src;
 	src.x = 0;
 	src.y = 0;
-	src.w = GetH();
-	src.h = GetW();
+	src.w = size.x;
+	src.h = size.y;
 	SDL_Rect dst;
-	dst.x = int(GetX()) * 4 - cam.pos.x;
-	dst.y = int(GetY()) * 4 - cam.pos.y;
-	dst.w = int(GetW()) * 4;
-	dst.h = int(GetH()) * 4;
+	dst.x = pos.x - cam.pos.x;
+	dst.y = pos.y - cam.pos.y;
+	dst.w = size.x;
+	dst.h = size.y;
 
-	SDL_RenderCopy(renderer, GetTexture(), &src, &dst);
-}
-
-int GameObject::GetW() const
-{
-	return size.x;
+	SDL_RenderCopy(RenderWindow::renderer, GetTexture(), &src, &dst);
 }
 
-int GameObject::GetH() const
-{
-	return size.y;
-}
-
-float GameObject::GetX() const
-{
-	return pos.x;
-}
-float GameObject::GetY() const
-{
-	return pos.y;
-}
-void GameObject::SetX(float _x)
-{
-	pos.x = _x;
-}
-void GameObject::SetY(float _y)
-{
-	pos.y = _y;
-}
 
 
 

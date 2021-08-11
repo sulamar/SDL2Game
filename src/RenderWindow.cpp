@@ -1,8 +1,8 @@
 #include "RenderWindow.h"
-bool RenderWindow::run = false;
+SDL_Renderer* RenderWindow::renderer = nullptr;
 
 RenderWindow::RenderWindow(const char* _title, int _width, int _height)
-	: title(_title), width(_width), height(_height), window(nullptr), renderer(nullptr)
+	: title(_title), width(_width), height(_height), window(nullptr), running(false)
 {
 	if(SDL_Init(SDL_INIT_EVERYTHING) > 0)		
 	{ 
@@ -14,7 +14,6 @@ RenderWindow::RenderWindow(const char* _title, int _width, int _height)
 		std::cout << "SDL could not init everything: " << SDL_Error << std::endl;
 		return;
 	}
-
 }
 
 RenderWindow::RenderWindow()
@@ -37,33 +36,7 @@ void RenderWindow::Init()
 	if (renderer == nullptr)
 		std::cout << "Renderer could not be created: " << SDL_Error << std::endl;
 
-	run = true;
-}
-
-bool RenderWindow::GetRunning()
-{
-	return run;
-}
-
-void RenderWindow::SetRunning(bool r)
-{
-	run = r;
-}
-
-
-SDL_Texture* RenderWindow::LoadTexture(const char* _filepath)
-{
-	SDL_Texture* tex = nullptr;
-	tex = IMG_LoadTexture(renderer, _filepath);
-	if (tex != nullptr)
-		return tex;
-	else
-		std::cout << "Texture could not be loaded: " << IMG_GetError() << std::endl;
-}
-
-SDL_Renderer* RenderWindow::GetRenderer() const
-{
-	return renderer;
+	running = true;
 }
 
 void RenderWindow::Clear()

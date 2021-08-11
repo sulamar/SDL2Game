@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Ground.h"
 #include "SoundManager.h"
+#include "Collision.h"
 class GameManager
 {
 public:
@@ -18,12 +19,16 @@ private:
 	SDL_Texture* playerTex;
 	SDL_Texture* groundTex;
 
+	Collision collision;
+
 	Player player;
 	std::vector<Ground> grounds;
 
 	const char* title;
 	int width;
 	int height;
+
+	void Update();
 
 	Camera cam = { Vector2(0, 0), Vector2(width, height) };
 };

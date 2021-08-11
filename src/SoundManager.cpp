@@ -23,10 +23,10 @@ void SoundManager::PlayMusic(const char* path)
 		Mix_PlayMusic(music, -1);
 }
 
-void SoundManager::PlaySound(const char* path)
+void SoundManager::PlaySound(const char* path, int volume)
 {
 	sound = Mix_LoadWAV(path);
-	Mix_VolumeChunk(sound, 10);
+	Mix_VolumeChunk(sound, volume);
 	if (sound == nullptr)
 	{
 		std::cout << "Sound could not be loaded: Error: " << Mix_GetError() << std::endl;
